@@ -1,0 +1,15 @@
+{
+  "name": "practical-12-hardhat-addition",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "compile": "hardhat compile",
+    "node": "hardhat node",
+    "deploy": "hardhat run scripts/deploy.js --network localhost"
+  },
+  "devDependencies": {
+    "hardhat": "2.22.18",
+    "@nomicfoundation/hardhat-ethers": "3.0.8",
+    "ethers": "6.13.4"
+  }
+}
