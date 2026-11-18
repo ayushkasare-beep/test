@@ -98,3 +98,67 @@ volumes:
 
 dir
 docker compose config
+Practical 4 – Docker Basics
+Step 1: Open PowerShell as Administrator
+
+Stop Jenkins and download Nginx:
+net stop jenkins
+docker pull nginx
+docker run -d --name nginx-test -p 8080:80 nginx
+
+
+Open http://localhost:8080
+
+Stop Nginx and restart Jenkins:
+docker stop nginx-test
+net start jenkins
+
+
+Step 2: Create project folder and HTML file
+cd $HOME\Desktop
+mkdir my-web-app
+cd my-web-app
+
+
+@'
+<!DOCTYPE html>
+<html>
+<head><title>My Web App</title></head>
+<body style="font-family:Arial;text-align:center;margin-top:100px;">
+<h1>Hello Docker</h1>
+<p>Your Name - Your Roll Number</p>
+</body>
+</html>
+'@ | Set-Content -Encoding ascii index.html
+
+
+Step 3: Create Dockerfile
+@'
+FROM nginx:alpine
+COPY index.html /usr/share/nginx/html/index.html
+EXPOSE 80
+'@ | Set-Content -Encoding ascii Dockerfile
+
+
+Check:
+type Dockerfile
+
+
+Step 4: Build and run Docker image
+docker build -t my-web-app:v1 .
+docker run -d --name my-web-container -p 8081:80 my-web-app:v1
+
+
+Open http://localhost:8081
+
+Step 5: Docker management commands
+docker ps
+docker images
+docker logs my-web-container
+docker stop my-web-container
+docker rm my-web-container
+docker ps -a
+
+
+Remove Nginx test container:
+docker rm nginx-test
