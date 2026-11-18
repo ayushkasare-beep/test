@@ -419,3 +419,4 @@ A GitHub webhook can't reach `localhost` from the internet, so polling is the ri
 ## Conclusion (Practical 3)
 
 We created a Jenkins Pipeline job `cicd-pipeline` that reads its Jenkinsfile from GitHub. The pipeline checked out the code, compiled it, ran the JUnit test, packaged it into a `.jar` and deployed it to `C:\deploy`, with every stage shown in Stage View. A commit on GitHub started a new build automatically through Poll SCM. This shows a complete CI/CD pipeline using Jenkins and Maven.
+gsiashcw
